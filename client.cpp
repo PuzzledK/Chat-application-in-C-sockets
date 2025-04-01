@@ -116,11 +116,7 @@ void handleReceiving(int sock)
                 }
                 else if(s == "MSG"){
                     recv(sock,buff+sizeBuffSize,maxMessageLen,0);
-                    int from = (buff[3] - '0');
-                    if(buff[4] !=' '){
-                        from *= 10;
-                        from += buff[4] - '0';
-                    }
+                    int from = getId(buff);
 
                     cout<<"MESSAGE FROM "<<from<<" -> ";
                     if(buff[4] == ' '){
